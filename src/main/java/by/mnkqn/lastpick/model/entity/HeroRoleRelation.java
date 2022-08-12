@@ -1,3 +1,4 @@
+/*
 package by.mnkqn.lastpick.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -29,3 +30,4 @@ public class HeroRoleRelation {
     @JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false)
     private Role role;
 }
+*/
