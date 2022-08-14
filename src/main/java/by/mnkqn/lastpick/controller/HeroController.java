@@ -1,6 +1,7 @@
 package by.mnkqn.lastpick.controller;
 
 import by.mnkqn.lastpick.client.OpendotaClient;
+import by.mnkqn.lastpick.mapping.OpendotaMapping;
 import by.mnkqn.lastpick.model.entity.Hero;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/test")
+@RequestMapping(by.mnkqn.lastpick.mapping.RequestMapping.HEROES_URL)
 public class HeroController {
 
     private final OpendotaClient opendotaClient;
