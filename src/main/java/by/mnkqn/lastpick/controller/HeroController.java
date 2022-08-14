@@ -1,27 +1,27 @@
 package by.mnkqn.lastpick.controller;
 
+import by.mnkqn.lastpick.client.OpendotaClient;
+import by.mnkqn.lastpick.model.entity.Hero;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/test")
 public class HeroController {
 
-    String baseUrl = "https://api.opendota.com/api";
+    private final OpendotaClient opendotaClient;
 
     @GetMapping
-    public ResponseEntity<String> findheroes() {
-        RestTemplate template = new RestTemplate();
-        String fooResourceUrl
-                = baseUrl + "/heroes";
-        ResponseEntity<String> response
-                = template.getForEntity(fooResourceUrl, String.class);
-        return response;
+    public ResponseEntity<List<Hero>> findheroes() {
+        final List<Hero> heroes = opendotaClient.findAll();
+        return new ResponseEntity<>(heroes, HttpStatus.OK);
     }
 
 }
